@@ -45,25 +45,29 @@ window.addEventListener("load", () => {
   }
 });
 
-
 // =======================
 // PROJECT DATA
 // =======================
 const projectData = {
   p1: {
     title: "Supply Chain Management System",
-    description: "Blockchain-based system for secure product tracking and transparency.",
-    tech: "Blockchain"
+    description:
+      "Blockchain-based application designed to enhance transparency, security, and traceability in supply chain operations. The system enables secure transaction handling, product lifecycle tracking, user interaction modules, and improved data security while reducing manipulation risks.",
+    tech: "Java, HTML, CSS, Solidity, Ganache, Truffle, MetaMask"
   },
+
   p2: {
     title: "Movie Recommendation System",
-    description: "Machine learning system that recommends movies based on user preferences.",
-    tech: "Machine Learning"
+    description:
+      "Machine learning-based recommendation system developed using Python that analyzes user preferences and suggests personalized movie recommendations. It uses cosine similarity, Pandas, NumPy, and Flask for recommendation generation and user interaction.",
+    tech: "Python, Pandas, NumPy, Scikit-learn, Flask"
   },
+
   p3: {
     title: "Smart Street Management System",
-    description: "IoT-based system for smart street automation and energy saving.",
-    tech: "IoT"
+    description:
+      "IoT-based smart street lighting system designed using IR sensors to automate street light control based on movement detection. The project focuses on reducing energy consumption, improving automation, and enhancing public infrastructure efficiency.",
+    tech: "IoT, IR Sensors, Breadboard, Basic Electronics"
   }
 };
 
@@ -93,14 +97,27 @@ function closeModal() {
 document.addEventListener("DOMContentLoaded", () => {
 
   // CONTACT FORM
-  const form = document.querySelector(".contact-form");
-  if (form) {
-    form.addEventListener("submit", e => {
-      e.preventDefault();
+const form = document.querySelector(".contact-form");
+
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_0zhfjuj",
+      "template_sbraltc",
+      this
+    )
+    .then(() => {
       alert("✅ Message sent successfully!");
       form.reset();
+    })
+    .catch((error) => {
+      alert("❌ Failed to send message.");
+      console.log(error);
     });
-  }
+  });
+}
 
   // SCROLL ANIMATION
   const observer = new IntersectionObserver(entries => {
